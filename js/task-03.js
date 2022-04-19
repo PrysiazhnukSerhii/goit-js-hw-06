@@ -17,19 +17,14 @@ const images = [
 const imageGallery = document.querySelector(".gallery")
 
 
-let galleryElements = images.map(value => {
+let totalGallery = images.map(value => {
   
-  const galleryItemEl = document.createElement("li");
+  let galleryElements = "";
 
-  const galleryImageEl = document.createElement("img");
-  galleryImageEl.src = value.url;
-  galleryImageEl.alt = value.alt;
-  galleryImageEl.classList.add ("picture")
+  galleryElements +=`<li> <img src="${value.url}" alt="${value.alt}" class="picture"> </li>`;
 
+  return galleryElements;
 
-  galleryItemEl.appendChild(galleryImageEl);
+});
 
-  return galleryItemEl;
-}) 
-
-imageGallery.append(...galleryElements)
+imageGallery.insertAdjacentHTML("afterbegin",totalGallery.join(""));
